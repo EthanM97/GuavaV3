@@ -426,4 +426,6 @@ public class LocationComponentCameraOptionsActivity extends AppCompatActivity im
         }
         return false;
     }
+
+
 }
