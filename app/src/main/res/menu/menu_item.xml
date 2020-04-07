@@ -6,7 +6,7 @@
 
     <item
         android:id="@+id/contact"
-        android:title="Saved Routes"/>
+        android:title="Saved Routes" />
 
     <item
         android:id="@+id/about"

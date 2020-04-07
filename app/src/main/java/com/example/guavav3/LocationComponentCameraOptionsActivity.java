@@ -1,6 +1,7 @@
 package com.example.guavav3;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ListPopupWindow;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.mapbox.android.core.location.LocationEngineRequest;
@@ -61,6 +63,7 @@ public class LocationComponentCameraOptionsActivity extends AppCompatActivity im
     Toolbar toolbar;
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
+
 
     @CameraMode.Mode
     private int cameraMode = CameraMode.TRACKING;
@@ -116,9 +119,11 @@ public class LocationComponentCameraOptionsActivity extends AppCompatActivity im
         drawerLayout = findViewById(R.id.drawer);
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.navigationView);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.drawerOpen,R.string.drawerClose);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -407,6 +412,8 @@ public class LocationComponentCameraOptionsActivity extends AppCompatActivity im
                 break;
             case R.id.contact:
                 Toast.makeText(LocationComponentCameraOptionsActivity.this, "Saved Routes Selected", Toast.LENGTH_SHORT).show();
+                Intent savedRoute = new Intent(this, SavedRoutes.class);
+                startActivity(savedRoute);
                 break;
             case R.id.about:
                 Toast.makeText(LocationComponentCameraOptionsActivity.this, "About us Selected", Toast.LENGTH_SHORT).show();
