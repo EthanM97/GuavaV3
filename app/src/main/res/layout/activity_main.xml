@@ -8,41 +8,15 @@
     android:id="@+id/drawer"
     tools:context=".MainActivity">
 
-    <androidx.drawerlayout.widget.DrawerLayout
+
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:translationZ="100dp" >
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigationView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:translationZ="100dp"
-            android:visibility="visible"
-            app:headerLayout="@layout/header"
-            app:itemTextColor="#fff"
-            app:menu="@menu/menu_item" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.mapbox.mapboxsdk.maps.MapView
-                android:id="@+id/mapView"
-                android:layout_below="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:translationZ="100dp" />
-
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:foregroundGravity="top|left" />
-
-        </RelativeLayout>
-    </androidx.drawerlayout.widget.DrawerLayout>
-
+    </com.mapbox.mapboxsdk.maps.MapView>
 
 </FrameLayout>
