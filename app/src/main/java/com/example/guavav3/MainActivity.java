@@ -17,14 +17,9 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity{
 
     private MapView mapView;
-
-    DrawerLayout drawerLayout;
-    Toolbar toolbar;
-    NavigationView navigationView;
-    ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +42,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 });
             }
         });
-
-        drawerLayout = findViewById(R.id.drawer);
-        toolbar = findViewById(R.id.toolbar);
-        navigationView = findViewById(R.id.navigationView);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.drawerOpen,R.string.drawerClose);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -100,26 +84,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mapView.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch (menuItem.getItemId()){
-            case R.id.profile:
-                Toast.makeText(MainActivity.this, "Map Selected", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.contact:
-                Toast.makeText(MainActivity.this, "Saved Routes Selected", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.about:
-                Toast.makeText(MainActivity.this, "About us Selected", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.logout:
-                Toast.makeText(MainActivity.this, "Contact Us Selected", Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                break;
-        }
-        return false;
     }
 }

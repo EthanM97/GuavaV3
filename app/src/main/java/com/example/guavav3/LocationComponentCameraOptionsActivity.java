@@ -3,6 +3,7 @@ package com.example.guavav3;
 import android.annotation.SuppressLint;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,9 +11,13 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ListPopupWindow;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.navigation.NavigationView;
 import com.mapbox.android.core.location.LocationEngineRequest;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
@@ -39,7 +44,7 @@ import java.util.List;
  * {@link CameraMode}.
  */
 public class LocationComponentCameraOptionsActivity extends AppCompatActivity implements OnMapReadyCallback,
-        OnLocationClickListener, OnCameraTrackingChangedListener {
+        OnLocationClickListener, OnCameraTrackingChangedListener, NavigationView.OnNavigationItemSelectedListener {
 
     private static final String SAVED_STATE_CAMERA = "saved_state_camera";
     private static final String SAVED_STATE_RENDER = "saved_state_render";
@@ -51,6 +56,11 @@ public class LocationComponentCameraOptionsActivity extends AppCompatActivity im
     private LocationComponent locationComponent;
     private MapboxMap mapboxMap;
     private Location lastLocation;
+
+    DrawerLayout drawerLayout;
+    Toolbar toolbar;
+    NavigationView navigationView;
+    ActionBarDrawerToggle toggle;
 
     @CameraMode.Mode
     private int cameraMode = CameraMode.TRACKING;
@@ -102,6 +112,17 @@ public class LocationComponentCameraOptionsActivity extends AppCompatActivity im
             });
             permissionsManager.requestLocationPermissions(this);
         }
+
+        drawerLayout = findViewById(R.id.drawer);
+        toolbar = findViewById(R.id.toolbar);
+        navigationView = findViewById(R.id.navigationView);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.drawerOpen,R.string.drawerClose);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -376,5 +397,26 @@ public class LocationComponentCameraOptionsActivity extends AppCompatActivity im
     public void onLowMemory() {
         super.onLowMemory();
         mapView.onLowMemory();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()){
+            case R.id.profile:
+                Toast.makeText(LocationComponentCameraOptionsActivity.this, "Map Selected", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.contact:
+                Toast.makeText(LocationComponentCameraOptionsActivity.this, "Saved Routes Selected", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.about:
+                Toast.makeText(LocationComponentCameraOptionsActivity.this, "About us Selected", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.logout:
+                Toast.makeText(LocationComponentCameraOptionsActivity.this, "Contact Us Selected", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
+        return false;
     }
 }

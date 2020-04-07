@@ -8,7 +8,9 @@
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        tools:openDrawer="end"
+        android:id="@+id/drawer">
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigationView"
@@ -29,6 +31,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
                 android:foregroundGravity="top|left" />
 
             <com.mapbox.mapboxsdk.maps.MapView
@@ -37,7 +40,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="0dp"
                 mapbox:mapbox_cameraZoom="10"
-
                 android:layout_below="@+id/toolbar"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
