@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GuavaV3</string>
+    <string name="app_name">Guava</string>
     <string name="new_location">New Location</string>
     <string name="access_token">pk.eyJ1IjoiZXZpbGtpbmdodCIsImEiOiJjazdmaXcwOXkwM2V5M250ZXRnd3NkdmRpIn0.8aZ0kPcDrifOgKb0pjZjvg</string>
     <string name="user_location_permission_not_granted">Permission not grated</string>
