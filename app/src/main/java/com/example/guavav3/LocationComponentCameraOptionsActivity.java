@@ -1,6 +1,7 @@
 package com.example.guavav3;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -419,4 +420,6 @@ public class LocationComponentCameraOptionsActivity extends AppCompatActivity im
         }
         return false;
     }
+
+
 }

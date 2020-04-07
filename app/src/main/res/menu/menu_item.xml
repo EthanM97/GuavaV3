@@ -2,7 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/profile"
-        android:title="Map"/>
+        android:enabled="true"
+        android:title="Map" />
 
     <item
         android:id="@+id/contact"
